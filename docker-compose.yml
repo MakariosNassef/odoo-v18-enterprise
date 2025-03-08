@@ -7,9 +7,9 @@ services:
     volumes:
       - odoo-db-18:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+      POSTGRES_DB: postgres
     networks:
       - odoo-network-18
     healthcheck:
@@ -24,12 +24,12 @@ services:
       - db-18
     restart: always
     ports:
-      - "${HOST_PORT}:${CONTAINER_PORT}"
+      - "8071:8069"
     environment:
       - HOST=db-18
-      - USER=${ODOO_USER}
-      - PASSWORD=${PASSWORD}
-      - DATABASE=${DATABASE}
+      - USER=odoo
+      - PASSWORD=odoo
+      - DATABASE=postgres
     volumes:
       - odoo-data-18:/var/lib/odoo
       - ./addons:/mnt/extra-addons
