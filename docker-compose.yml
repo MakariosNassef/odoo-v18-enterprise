@@ -35,6 +35,7 @@ services:
       - ./addons:/mnt/extra-addons
       - ./enterprise:/mnt/enterprise-addons
       - ./etc/odoo.conf:/etc/odoo/odoo.conf
+    user: "${ODOO_USER:-odoo}"
     networks:
       - odoo-network-18
     healthcheck:
